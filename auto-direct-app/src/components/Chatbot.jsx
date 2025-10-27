@@ -50,13 +50,15 @@ function Chatbot() {
   }, []);
   
   // Environment-based configuration
-  const API_BASE_URL = process.env.NODE_ENV === 'production' 
-    ? 'https://autos-direct.com.au' 
-    : 'http://localhost:3000';
+  const API_BASE_URL = import.meta.env.VITE_API_URL || 
+    (import.meta.env.MODE === 'production' 
+      ? 'https://autos-direct.com.au' 
+      : 'http://localhost:3000');
 
-  const SOCKET_URL = process.env.NODE_ENV === 'production'
-    ? 'https://autos-direct.com.au'
-    : 'http://localhost:3000';
+  const SOCKET_URL = import.meta.env.VITE_API_URL || 
+    (import.meta.env.MODE === 'production'
+      ? 'https://autos-direct.com.au'
+      : 'http://localhost:3000');
 
   const COMPLAINTS_URL = process.env.NODE_ENV === 'production'
     ? 'https://autos-direct.com.au/complaints'

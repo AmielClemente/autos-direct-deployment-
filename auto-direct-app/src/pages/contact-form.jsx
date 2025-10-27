@@ -3,9 +3,10 @@ import { User, Mail, Phone, MessageSquare, Clock, Send } from 'lucide-react';
 
 function ContactForm() {
   // Environment-based configuration
-  const API_BASE_URL = process.env.NODE_ENV === 'production' 
-    ? 'https://autos-direct.com.au' 
-    : 'http://localhost:3000';
+  const API_BASE_URL = import.meta.env.VITE_API_URL || 
+    (import.meta.env.MODE === 'production' 
+      ? 'https://autos-direct.com.au' 
+      : 'http://localhost:3000');
 
   const [formData, setFormData] = useState({
     customerName: '',

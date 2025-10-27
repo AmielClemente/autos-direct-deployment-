@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "auto-direct-app/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/assets/(.*)",
+      "dest": "/auto-direct-app/dist/assets/$1"
+    },
+    {
+      "src": "/(.*\\.(js|css|ico|png|jpg|svg|woff|woff2))",
+      "dest": "/auto-direct-app/dist/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/auto-direct-app/dist/index.html"
+    }
+  ],
+  "buildCommand": "cd auto-direct-app && npm install && npm run build",
+  "outputDirectory": "auto-direct-app/dist",
+  "framework": "vite",
+  "env": {
+    "VITE_API_URL": "https://your-api-domain.railway.app"
+  }
+}
+

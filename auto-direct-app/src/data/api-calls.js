@@ -1,6 +1,7 @@
 // Environment-based API configuration
-const api = process.env.NODE_ENV === 'production' 
-  ? 'https://autos-direct.com.au' 
-  : 'http://localhost:3000';
+const api = import.meta.env.VITE_API_URL || 
+  (import.meta.env.MODE === 'production' 
+    ? 'https://autos-direct.com.au' 
+    : 'http://localhost:3000');
 
 export default api;
