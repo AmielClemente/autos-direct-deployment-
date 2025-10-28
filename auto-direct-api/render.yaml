@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: auto-direct-api
+    runtime: node
+    buildCommand: npm install
+    startCommand: node index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    database:
+      name: autos-direct-db
+      databaseName: autos-direct
+      user: auto-direct-user
+      plan: starter # Free tier
+
